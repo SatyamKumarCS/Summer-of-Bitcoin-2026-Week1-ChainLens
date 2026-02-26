@@ -75,6 +75,50 @@ This is a protocol-focused challenge — it tests deep understanding of Bitcoin 
 
 ---
 
+## Tech Stack
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| Language | Python 3 | Core parsing, analysis, and CLI logic |
+| Web Framework | Flask | REST API and web visualizer backend |
+| Frontend | HTML / CSS / JavaScript | Single-page web visualizer UI |
+| Scripting | Bash | CLI entry point, setup, and grading scripts |
+| Cryptography | `hashlib` (SHA-256) | TXID/WTXID computation, merkle root, checksums |
+| Binary Parsing | `struct` | Low-level deserialization of Bitcoin wire format |
+| Math | Pure Python | secp256k1 point decompression (no external libs) |
+| Encoding | Custom | Base58Check, Bech32, Bech32m — implemented from scratch |
+
+> No external Bitcoin libraries are used. All transaction parsing, script classification, address derivation, and cryptographic operations are built from first principles.
+
+---
+
+## Test Results
+
+**Total: 5617 / 5617 tests passed (0 failures)**
+
+| Grader | Tests Passed | Tests Failed | Result |
+|--------|:------------:|:------------:|:------:|
+| Transaction Grader | 591 | 0 | PASS |
+| Block Grader | 5026 | 0 | PASS |
+| **Overall** | **5617** | **0** | **ALL PASSED** |
+
+All test categories from the grader pass successfully:
+
+| Category | Status | Details |
+|----------|:------:|---------|
+| Transaction Parsing | PASS | Legacy, SegWit, Taproot fixtures |
+| Script Classification | PASS | P2PKH, P2SH, P2WPKH, P2WSH, P2TR, OP_RETURN |
+| Address Derivation | PASS | Base58Check, Bech32, Bech32m |
+| Fee & RBF Analysis | PASS | Fee computation, RBF signaling detection |
+| Timelock Analysis | PASS | Absolute (block height / unix) + relative (BIP68) |
+| Block Parsing | PASS | Real mainnet `blk*.dat` with XOR decoding |
+| Undo Data | PASS | `rev*.dat` parsing + script decompression |
+| Merkle Verification | PASS | Computed merkle root matches block header |
+| Web Visualizer | PASS | `/api/health`, `/api/analyze`, `/api/analyze-block` |
+| Hidden Fixtures | PASS | Taproot scriptpath, P2SH nesting, OP_RETURN variants, undo compression |
+
+---
+
 ## Key Links
 
 - **Challenge Repo:** [Summer of Bitcoin 2026 — Chain Lens](https://github.com/SummerOfBitcoin/2026-developer-challenge-1-chain-lens-SatyamKumarCS)
