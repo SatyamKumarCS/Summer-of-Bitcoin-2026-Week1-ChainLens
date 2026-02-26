@@ -1,10 +1,10 @@
-# 🧠 My Approach — Chain Lens (Summer of Bitcoin 2026)
+# My Approach — Chain Lens (Summer of Bitcoin 2026)
 
 > A detailed walkthrough of how I designed, implemented, and optimized the Chain Lens Bitcoin Transaction & Block Analyzer.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Understanding the Problem](#1-understanding-the-problem)
 2. [Architecture & Design Decisions](#2-architecture--design-decisions)
